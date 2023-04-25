@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+
+        android:id="@+id/birthday_linear_layout"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:orientation="vertical">
+
+            <com.example.mebby.app.customViews.CustomEditText
+                android:id="@+id/birthday_day_edit_text"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/selector_input_drawable"
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="center"
+
+
+                android:hint="DD"
+                android:inputType="number"
+                android:maxLength="2"
+                android:tag="DAY"
+                android:textAlignment="center"
+                android:textColor="@color/dark_grey_normal"
+                android:textColorHint="@color/dark_grey_light"
+                android:textSize="@dimen/body_medium" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="@dimen/_8dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:orientation="vertical">
+
+            <com.example.mebby.app.customViews.CustomEditText
+                android:id="@+id/birthday_month_edit_text"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/selector_input_drawable"
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="center"
+
+                android:hint="MM"
+                android:inputType="number"
+                android:maxLength="2"
+                android:tag="MONTH"
+                android:textAlignment="center"
+                android:textColor="@color/dark_grey_normal"
+                android:textColorHint="@color/dark_grey_light"
+                android:textSize="@dimen/body_medium" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="@dimen/_8dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <com.example.mebby.app.customViews.CustomEditText
+                android:id="@+id/birthday_year_edit_text"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/selector_input_drawable"
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="center"
+
+                android:hint="YYYY"
+                android:inputType="number"
+                android:maxLength="4"
+                android:tag="YEAR"
+                android:textAlignment="center"
+                android:textColor="@color/dark_grey_normal"
+                android:textColorHint="@color/dark_grey_light"
+                android:textSize="@dimen/body_medium" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

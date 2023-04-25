@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClearableEditText">
+        <attr name="text" format="string" />
+        <attr name="hint" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="maxLength" format="integer" />
+        <attr name="fontFamily" format="string" />
+        <attr name="rightDrawable" format="reference|color" />
+        <attr name="leftDrawable" format="reference|color" />
+    </declare-styleable>
+</resources>

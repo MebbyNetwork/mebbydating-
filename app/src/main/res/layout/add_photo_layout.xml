@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_height="wrap_content"
+
+    android:layout_width="match_parent"
+    android:background="@color/transparent">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_delete"
+
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+
+        android:layout_marginTop="-12dp"
+        android:layout_marginEnd="-6dp"
+
+        android:background="@color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/delete_image"
+
+        android:stateListAnimator="@null"
+        android:translationZ="@dimen/_2dp"
+        android:visibility="visible"
+
+        app:layout_constraintEnd_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/transparent"
+
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+
+        android:layout_marginEnd="@dimen/_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/transparent">
+
+            <ImageView
+                android:id="@+id/image_view"
+
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+
+                android:scaleType="centerCrop"
+                android:src="@color/transparent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/imageview" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_add"
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:background="@drawable/photo_drawable"
+                android:src="@drawable/add_plus"
+                android:tint="@color/blue"
+
+                android:stateListAnimator="@null"
+
+                app:layout_constraintBottom_toBottomOf="@+id/image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

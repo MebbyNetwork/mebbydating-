@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+    <navigation android:id="@+id/registration_graph"
+        app:startDestination="@id/firstNameSignInFragment">
+        <fragment
+            android:id="@+id/firstNameSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.FirstNameSignInFragment"
+            android:label="fragment_first_name_sign_in"
+            tools:layout="@layout/fragment_first_name_sign_in">
+            <action
+                android:id="@+id/action_firstNameSignInFragment_to_birthdaySignInFragment"
+                app:destination="@id/birthdaySignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/birthdaySignInFragment"
+            android:name="com.example.mebby.app.ui.signin.BirthdaySignInFragment"
+            android:label="fragment_birthday_sign_in"
+            tools:layout="@layout/fragment_birthday_sign_in">
+            <action
+                android:id="@+id/action_birthdaySignInFragment_to_genderSignInFragment"
+                app:destination="@id/genderSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/genderSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.GenderSignInFragment"
+            android:label="fragment_gender_sign_in"
+            tools:layout="@layout/fragment_gender_sign_in">
+            <action
+                android:id="@+id/action_genderSignInFragment_to_findSignInFragment"
+                app:destination="@id/findSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/findSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.FindSignInFragment"
+            android:label="fragment_find_sign_in"
+            tools:layout="@layout/fragment_find_sign_in">
+            <action
+                android:id="@+id/action_findSignInFragment_to_showSignInFragment"
+                app:destination="@id/showSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/showSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.ShowSignInFragment"
+            android:label="fragment_show_sign_in"
+            tools:layout="@layout/fragment_show_sign_in">
+            <action
+                android:id="@+id/action_showSignInFragment_to_photoSignInFragment"
+                app:destination="@id/photoSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/photoSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.PhotoSignInFragment"
+            android:label="fragment_photo_sign_in"
+            tools:layout="@layout/fragment_photo_sign_in">
+            <action
+                android:id="@+id/action_photoSignInFragment_to_interestsSignInFragment"
+                app:destination="@id/interestsSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/interestsSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.InterestsSignInFragment"
+            android:label="fragment_interests_sign_in"
+            tools:layout="@layout/fragment_interests_sign_in">
+            <action
+                android:id="@+id/action_interestsSignInFragment_to_aboutMeSignInFragment"
+                app:destination="@id/aboutMeSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/aboutMeSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.AboutMeSignInFragment"
+            android:label="fragment_about_me_sign_in"
+            tools:layout="@layout/fragment_about_me_sign_in">
+            <action
+                android:id="@+id/action_aboutMeSignInFragment_to_citySignInFragment"
+                app:destination="@id/citySignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/citySignInFragment"
+            android:name="com.example.mebby.app.ui.signin.CitySignInFragment"
+            android:label="fragment_city_sign_in"
+            tools:layout="@layout/fragment_city_sign_in">
+            <action
+                android:id="@+id/action_citySignInFragment_to_createUserProfile"
+                app:destination="@id/createUserProfile" />
+        </fragment>
+        <fragment
+            android:id="@+id/createUserProfile"
+            android:name="com.example.mebby.app.ui.signin.CreateUserProfile"
+            android:label="fragment_create_user_profile"
+            tools:layout="@layout/fragment_create_user_profile">
+            <action
+                android:id="@+id/action_createUserProfile_to_mainFragment"
+                app:destination="@id/mainFragment"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
+                app:popUpTo="@id/nav_graph"
+                app:popUpToInclusive="true" />
+        </fragment>
+
+    </navigation>
+    <navigation android:id="@+id/sign_in_graph"
+        app:startDestination="@id/phoneNumberSignInFragment">
+        <fragment
+            android:id="@+id/codeSentSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.CodeSentSignInFragment"
+            android:label="fragment_code_sent_sign_in"
+            tools:layout="@layout/fragment_code_sent_sign_in">
+            <argument
+                android:name="showAppBar"
+                android:defaultValue="false" />
+            <action
+                android:id="@+id/action_codeSentSignInFragment_to_registrationGraph"
+                app:destination="@id/registration_graph"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out"
+                app:popUpTo="@id/sign_in_graph"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_codeSentSignInFragment_to_mainFragment"
+                app:destination="@id/mainFragment"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
+                app:popUpTo="@id/sign_in_graph"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/phoneNumberSignInFragment"
+            android:name="com.example.mebby.app.ui.signin.PhoneNumberSignInFragment"
+            android:label="fragment_phone_number_sign_in"
+            tools:layout="@layout/fragment_phone_number_sign_in">
+            <argument
+                android:name="showAppBar"
+                android:defaultValue="false" />
+
+            <action
+                android:id="@+id/action_phoneNumberSignInFragment_to_codeSentSignInFragment"
+                app:destination="@id/codeSentSignInFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+        </fragment>
+    </navigation>
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.mebby.app.ui.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_sign_in_graph"
+            app:destination="@id/sign_in_graph"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_registration_graph"
+            app:destination="@id/registration_graph"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.mebby.app.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_sign_in_graph"
+            app:destination="@id/sign_in_graph"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <include app:graph="@navigation/main_graph" />
+</navigation>

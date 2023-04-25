@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "823533362199",
+    "project_id": "mebbydating-2eb1d",
+    "storage_bucket": "mebbydating-2eb1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823533362199:android:8a059e225f43f968a49052",
+        "android_client_info": {
+          "package_name": "com.example.mebby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823533362199-51q788d027kaqbvcqvubhldlpc5v4csl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAtUOhDSf-UvRdt3HbaDDr5CVsOKTrCME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823533362199-51q788d027kaqbvcqvubhldlpc5v4csl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

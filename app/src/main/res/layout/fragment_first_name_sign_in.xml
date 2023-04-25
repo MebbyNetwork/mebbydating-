@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".app.ui.signin.FirstNameSignInFragment"
+    android:background="@color/background_color"
+
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="16dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_24dp"
+
+                android:gravity="center_vertical"
+
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/my_first_name"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_large" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_16dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_56dp">
+
+            <com.example.mebby.app.customViews.CustomEditText
+                android:id="@+id/edit_text_name"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_56dp"
+
+                android:background="@drawable/selector_input_drawable"
+                android:fontFamily="@font/manrope_medium"
+
+                android:gravity="center_vertical"
+                android:hint="@string/name_placeholder"
+
+                android:inputType="textPersonName"
+                android:maxLength="32"
+
+                android:paddingHorizontal="@dimen/_16dp"
+                android:paddingVertical="@dimen/_16dp"
+                android:textColor="@color/dark_grey_normal"
+                android:textColorHint="@color/dark_grey_light"
+                android:textSize="@dimen/body_medium" />
+
+            <ImageButton
+                android:id="@+id/clear_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/_16dp"
+
+                android:background="@color/transparent"
+                android:contentDescription="@string/clear"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+
+                android:src="@drawable/close_sm" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_continue"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/selector_button_drawable"
+
+        android:fontFamily="@font/manrope_bold"
+        android:text="@string/continue_text"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/body_large"
+
+        android:stateListAnimator="@null"
+        android:enabled="false"
+
+        android:paddingVertical="@dimen/_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

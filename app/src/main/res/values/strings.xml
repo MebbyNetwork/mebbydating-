@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">Mebby</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_swipe">Swipes</string>
+    <string name="title_wallet">Wallet</string>
+    <string name="title_messenger">Messenger</string>
+    <string name="title_market">Market</string>
+    <string name="title_profile">Profile</string>
+    <string name="name_mebby">MEBBY</string>
+    <string name="filters">Filters</string>
+
+    <string name="name_and_age">%1$s, %2$d</string>
+    <string name="swipe_card_city">San-Francisco</string>
+    <string name="swipe_card_about">I want a serious relationship, the result of which would be a long happy life.</string>
+
+    <string name="todo">TODO</string>
+    <string name="back_arrow">Back</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
+    <string name="we_will_send_you_a_confirmation_phone">We will send you a confirmation phone</string>
+    <string name="mantra_continue">By continuing, you confirm that you have read and agree to our Terms of <a href="https://google.com">Privacy Policy</a> and <a href="https://google.com">Cookie Provisions</a></string>
+    <string name="continue_text">Continue</string>
+    <string name="continue_text_with_counter">Continue %1$d/%2$d</string>
+    <string name="enter_code_sent_to_your_number">Enter code sent to your number</string>
+    <string name="number_placeholder">We sent to the number </string>
+    <string name="number"><font color="#B6BFF5"><b>%1$s</b></font></string>
+    <string name="my_first_name">My first name</string>
+    <string name="name_placeholder">Elizabeth</string>
+    <string name="birthday">Birthday</string>
+    <string name="day">Day</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+    <string name="i_am">I am</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+    <string name="men">Men</string>
+    <string name="women">Women</string>
+    <string name="i_want_to_find">I want to find</string>
+    <string name="dating">Dating</string>
+    <string name="friends">Friends</string>
+    <string name="partner">Partner</string>
+    <string name="all">All</string>
+    <string name="add_photos">Add Photos</string>
+    <string name="add_at_least_2_photos_to_continue">Add at least 2 photos to continue</string>
+    <string name="my_interests">My Interests</string>
+    <string name="choose_your_interests_o_that_pick_up_the_best_couples">Choose your interests o that pick up the best couples</string>
+    <string name="search">Search</string>
+    <string name="about_me">About me</string>
+    <string name="write_a_few_sentences_about_yourself_and_your_life">Write a few sentences about yourself and your life.</string>
+    <string name="about_me_placeholder">I live in Canada for a 5 years and after relocation in USA, state California</string>
+    <string name="my_city">My city</string>
+    <string name="city_placeholder">San-Diego, USA</string>
+    <string name="_1_323_543_12_12">+1 323 543 12 12</string>
+
+    <string name="resend_code_wait">Resend code in %1$d seconds</string>
+    <string name="resend_code_complete">Resend code</string>
+    <string name="clear">Clear</string>
+    <string name="error_18_age">Sorry, registration is only available from the age of 18.</string>
+    <string name="error_invalid_date">Please, enter the correct date.</string>
+    <string name="imageview">ImageView</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="select_source">Select source</string>
+    <string name="_1_s">%1$s</string>
+    <string name="_1_d_300">%1$d/300</string>
+    <string name="skip">SKIP</string>
+    <string name="choose_city">choose city</string>
+    <string name="select_your_city">Select your city</string>
+    <string name="choose_your_city">Choose your city</string>
+    <string name="city_and_country">%1$s, %2$s</string>
+    <string name="show_me">Show me</string>
+    <string name="creating_your_profile">Creating your profile</string>
+    <string name="we_are_creating_your_profile_it_will_take_a_little_time_please_wait">We are creating your profile, it will take a little time. Please wait</string>
+    <string name="mebby_dating">MEBBY.DATING</string>
+    <string name="mebby_network_ecosystem">MEBBY.NETWORK ECOSYSTEM</string>
+    <string name="interests">Interests</string>
+    <string name="photogallery">Photogallery</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+</resources>

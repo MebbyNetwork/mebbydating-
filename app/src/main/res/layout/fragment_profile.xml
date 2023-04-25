@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:overScrollMode="never"
+    tools:context=".app.ui.profile.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <include layout="@layout/shimmer_profile_layout"/>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profile"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+
+            <ImageButton
+                android:id="@+id/edit_profile_button"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:background="@color/transparent"
+                android:elevation="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/edit_profile"
+                android:translationZ="3dp"
+                android:layout_marginEnd="@dimen/_8dp"
+                app:layout_constraintEnd_toStartOf="@+id/settings_button"
+                app:layout_constraintTop_toTopOf="@+id/settings_button" />
+
+            <ImageButton
+
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+
+                android:id="@+id/settings_button"
+
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:src="@drawable/settings"
+                android:translationZ="3dp"
+
+                android:elevation="5dp"
+
+                android:background="@color/transparent"
+                android:scaleType="centerCrop"
+
+                app:layout_constraintEnd_toEndOf="@+id/profile_image"
+                app:layout_constraintTop_toTopOf="@+id/profile_image" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_image"
+
+                android:translationZ="1dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@drawable/profile_photo_drawable"
+                android:elevation="4dp"
+
+                android:outlineSpotShadowColor="@color/black"
+
+                android:scaleType="centerCrop"
+
+                android:src="@drawable/form_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                tools:targetApi="p">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+
+            <LinearLayout
+                android:id="@+id/main_information"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_image">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:fontFamily="@font/manrope_bold"
+                        android:text=""
+                        android:textColor="@color/dark_grey_normal"
+                        android:textSize="@dimen/body_xlarge" />
+
+                    <Space
+                        android:layout_width="@dimen/_4dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:id="@+id/verification"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/verify" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_2dp" />
+
+                <TextView
+                    android:id="@+id/profile_city"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="San-Francisco"
+                    android:textColor="@color/lilac"
+                    android:textSize="@dimen/body_medium" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_4dp" />
+
+                <TextView
+                    android:id="@+id/about"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/manrope_medium"
+                    android:text="I am an avid traveler and have visited over 30 countries in the past 5 years. I have a black belt in karate and have been practicing martial arts since. I love to cook and experiment with different cuisines. My specialty is Thai food."
+                    android:textColor="@color/dark_grey_light"
+                    android:textSize="@dimen/body_medium" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/interests"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:paddingHorizontal="@dimen/_16dp"
+                android:text="@string/interests"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_information" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:nestedScrollingEnabled="false"
+
+                android:id="@+id/interestsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_8dp"
+                android:orientation="horizontal"
+
+                android:paddingHorizontal="@dimen/_16dp"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@id/interests"
+                tools:itemCount="6"
+                tools:listitem="@layout/selected_interests_layout" />
+
+            <LinearLayout
+                android:id="@+id/photogallery_linear_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+
+                android:paddingHorizontal="@dimen/_16dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interestsRecyclerView">
+
+                <TextView
+                    android:id="@+id/photogallery"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@string/photogallery"
+                    android:textColor="@color/dark_grey_normal"
+                    android:textSize="@dimen/body_large" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/button_add_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:src="@drawable/add_plus_with_bg" />
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/photogallery_recycler_view"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_8dp"
+                android:paddingHorizontal="@dimen/_16dp"
+
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/photogallery_linear_layout"
+                app:spanCount="3"
+                tools:itemCount="6"
+                tools:listitem="@layout/profile_image_layout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>
+

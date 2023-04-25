@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shimmer_profile_image"
+
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="@drawable/profile_photo_drawable"
+        android:elevation="4dp"
+
+        android:outlineSpotShadowColor="@color/black"
+
+        android:src="@color/shimmer"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:shapeAppearanceOverlay="@style/ImageView.Corner" />
+
+    <LinearLayout
+        android:id="@+id/shimmer_main_information"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_16dp"
+
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shimmer_profile_image">
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="@dimen/_24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@color/shimmer"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_2dp" />
+
+        <TextView
+            android:id="@+id/shimmer_profile_city"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/shimmer"
+            android:fontFamily="@font/manrope_semibold"
+            android:text="San-Francisco"
+            android:textColor="@color/transparent"
+            android:textSize="@dimen/body_medium" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_4dp" />
+
+        <TextView
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/shimmer"
+
+            android:fontFamily="@font/manrope_medium"
+            android:text="I am an avid traveler and have visited over 30 countries in the past 5 years. I have a black belt in karate and have been practicing martial arts since. I love to cook and experiment with different cuisines. My specialty is Thai food."
+            android:textColor="@color/transparent"
+            android:textSize="@dimen/body_medium" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/shimmer_interests"
+
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+
+        android:layout_marginTop="@dimen/_16dp"
+        android:layout_marginStart="@dimen/_16dp"
+
+        android:fontFamily="@font/manrope_semibold"
+        android:text="@string/interests"
+        android:textColor="@color/transparent"
+        android:background="@color/shimmer"
+        android:textSize="@dimen/body_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_main_information" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/shimmer_interestsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shimmer_interests"
+
+        app:flexWrap="wrap"
+
+        android:paddingHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:orientation="horizontal">
+
+        <include layout="@layout/shimmer_interest_layout"/>
+        <include layout="@layout/shimmer_interest_layout"/>
+        <include layout="@layout/shimmer_interest_layout"/>
+        <include layout="@layout/shimmer_interest_layout"/>
+        <include layout="@layout/shimmer_interest_layout"/>
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+    <LinearLayout
+        android:id="@+id/shimmer_photogallery_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_24dp"
+
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="@dimen/_8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/shimmer"
+
+        android:gravity="center"
+
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shimmer_interestsRecyclerView">
+
+        <TextView
+            android:id="@+id/shimmer_photogallery"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="@font/manrope_semibold"
+            android:text="@string/photogallery"
+            android:textColor="@color/transparent"
+            android:background="@color/shimmer"
+            android:textSize="@dimen/body_large" />
+
+
+
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/shimmer_photogallery_recycler_view"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:columnCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_photogallery_linear_layout">
+
+        <include layout="@layout/shimmer_image_layout" />
+
+        <include layout="@layout/shimmer_image_layout" />
+
+        <include layout="@layout/shimmer_image_layout" />
+
+        <include layout="@layout/shimmer_image_layout" />
+
+        <include layout="@layout/shimmer_image_layout" />
+
+    </GridLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/background_color"
+    tools:context=".app.ui.profile.EditProfileFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appbar"
+
+        app:buttonGravity="center_vertical"
+        android:layout_margin="0dp"
+
+        android:elevation="@dimen/_2dp"
+        android:background="@color/background_color"
+
+        app:contentInsetEnd="@dimen/_16dp"
+        app:contentInsetStart="@dimen/_16dp"
+
+        android:minHeight="0dp"
+        android:paddingVertical="12dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/header"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back"
+
+                style="@style/Base.Widget.AppCompat.ImageButton.Back"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="@dimen/_8dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+
+                android:fontFamily="@font/manrope_bold"
+
+                android:gravity="center"
+                android:text="Edit profile"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_large" />
+
+            <TextView
+                android:id="@+id/save_button"
+
+                android:visibility="invisible"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:fontFamily="@font/manrope_bold"
+
+                android:gravity="center"
+                android:text="Save"
+                android:textColor="@color/lilac"
+                android:textSize="@dimen/body_medium" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:overScrollMode="never"
+
+        android:fillViewport="false"
+        android:fitsSystemWindows="true"
+
+        android:layout_marginTop="50dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:visibility="gone"
+
+                android:id="@+id/general_photo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="General Photo"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+
+                android:id="@+id/image_recycler_view"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@id/general_photo_text"
+                tools:itemCount="3"
+                tools:listitem="@layout/edit_profile_image_layout" />
+
+            <TextView
+                android:id="@+id/name_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Name"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_recycler_view" />
+
+            <com.example.mebby.app.customViews.ClearableEditText
+                android:id="@+id/edit_text_name"
+
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_56dp"
+
+                android:layout_marginStart="16dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+                android:layout_marginEnd="16dp"
+                app:fontFamily="@font/manrope_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@id/name_text"
+                app:maxLength="32"
+                app:text="312434332"
+                app:textColor="@color/dark_grey_normal"
+                app:textSize="@dimen/body_medium" />
+
+            <TextView
+                android:id="@+id/birthday_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Birthday"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_name" />
+
+            <com.example.mebby.app.customViews.BirthdayEditText
+                android:id="@+id/birthday_linear_layout"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_56dp"
+
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/birthday_text" />
+
+            <TextView
+                android:id="@+id/about_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="About me"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/birthday_linear_layout" />
+
+
+            <EditText
+                android:id="@+id/about_edit_text"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/disable_input_drawable"
+
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="top|start"
+                android:hint="@string/about_me_placeholder"
+                android:inputType="textMultiLine"
+                android:lineHeight="20dp"
+
+                android:maxHeight="180dp"
+                android:maxLength="300"
+                android:maxLines="7"
+                android:minHeight="180dp"
+                android:paddingHorizontal="@dimen/_16dp"
+
+                android:paddingVertical="@dimen/_16dp"
+
+                android:textColor="@color/dark_grey_normal"
+                android:textColorHint="@color/dark_grey_light"
+                android:textSize="@dimen/body_medium"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_text"
+                tools:targetApi="p" />
+
+
+            <TextView
+                android:id="@+id/location_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Location"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_edit_text" />
+
+            <RelativeLayout
+                android:id="@+id/location_picker"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="@dimen/_56dp"
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:gravity="center_vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_text">
+
+                <TextView
+                    android:id="@+id/location_text_view"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+
+                    android:background="@drawable/selector_input_drawable"
+
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/manrope_medium"
+
+                    android:gravity="center_vertical"
+
+                    android:maxLength="32"
+
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:textColor="@color/dark_grey_normal"
+                    android:textColorHint="@color/dark_grey_light"
+                    android:textSize="@dimen/body_medium"
+                    app:drawableStartCompat="@drawable/map_pin" />
+
+                <ImageButton
+                    android:id="@+id/choose"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentEnd="true"
+
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:background="@color/transparent"
+
+                    android:contentDescription="@string/choose_city"
+
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/caret_right_sm"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/gender_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Gender"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location_picker" />
+
+            <RadioGroup
+                android:id="@+id/gender_radio_group"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_group_height"
+
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:background="@drawable/disable_input_drawable"
+                android:orientation="horizontal"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gender_text">
+
+                <RadioButton
+                    android:id="@+id/gender_man"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+                    android:checked="true"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="@string/man"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+                <RadioButton
+                    android:id="@+id/gender_woman"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+                    android:fontFamily="@font/manrope_semibold"
+
+                    android:gravity="center"
+                    android:text="@string/woman"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/interests_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+
+                android:layout_marginTop="@dimen/_16dp"
+
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Interests"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gender_radio_group" />
+
+            <com.example.mebby.app.customViews.InterestsViewLayout
+                android:id="@+id/interests_view_layout"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/interests_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

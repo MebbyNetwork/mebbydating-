@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.example.mebby.app.customViews.ClearableEditText
+        android:id="@+id/search_interests"
+
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_56dp"
+
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="@dimen/_8dp"
+        android:layout_marginEnd="16dp"
+        app:fontFamily="@font/manrope_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:leftDrawable="@drawable/search"
+        app:hint="Search"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:textColor="@color/dark_grey_normal"
+        app:textSize="@dimen/body_medium" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/selected_interests_recycler_view"
+
+        android:layout_marginHorizontal="@dimen/_16dp"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:overScrollMode="never"
+        android:orientation="horizontal"
+
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+        tools:itemCount="4"
+        tools:listitem="@layout/selected_interests_layout"
+
+        android:layout_marginTop="@dimen/_16dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_interests" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/interests_recycler_view"
+
+        android:layout_marginHorizontal="@dimen/_16dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginTop="@dimen/_16dp"
+        android:layout_marginBottom="@dimen/_16dp"
+
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+        tools:itemCount="3"
+        tools:listitem="@layout/interest_layout"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selected_interests_recycler_view"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

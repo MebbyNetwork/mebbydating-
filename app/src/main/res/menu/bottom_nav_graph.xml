@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/swipe_graph"
+        android:title="@string/title_swipe"
+        android:icon="@drawable/nav_swipe"/>
+
+    <item
+        android:id="@+id/wallet_graph"
+        android:title="@string/title_wallet"
+        android:icon="@drawable/nav_wallet"/>
+
+    <item
+        android:id="@+id/messenger_graph"
+        android:title="@string/title_messenger"
+        android:icon="@drawable/nav_messenger"/>
+
+    <item
+        android:id="@+id/market_graph"
+        android:title="@string/title_market"
+        android:icon="@drawable/nav_market"/>
+
+    <item
+        android:id="@+id/profile_graph"
+        android:title="@string/title_profile"
+        android:icon="@drawable/nav_profile"/>
+</menu>

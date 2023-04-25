@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".app.ui.signin.PhoneNumberSignInFragment"
+
+    android:paddingVertical="@dimen/_8dp"
+    android:paddingHorizontal="@dimen/_16dp"
+    android:background="@color/background_color">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@color/transparent"
+                android:contentDescription="@string/back_arrow"
+                android:scaleType="centerCrop"
+
+                android:src="@drawable/arrow_right" />
+
+            <Space
+                android:layout_width="@dimen/_8dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/enter_your_mobile_number"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_large" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/manrope"
+            android:text="@string/we_will_send_you_a_confirmation_phone"
+            android:textColor="@color/dark_grey_light"
+            android:textSize="@dimen/body_small" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_16dp" />
+
+        <com.example.mebby.app.customViews.CustomEditText
+            android:id="@+id/edit_text_phone_number"
+
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+
+            android:background="@drawable/selector_input_drawable"
+            android:fontFamily="@font/manrope_medium"
+            android:hint="@string/_1_323_543_12_12"
+
+            android:inputType="phone"
+            android:maxLength="16"
+
+            android:paddingHorizontal="@dimen/_16dp"
+            android:paddingVertical="@dimen/_16dp"
+            android:textColor="@color/dark_grey_normal"
+            android:textColorHint="@color/dark_grey_light"
+            android:textSize="@dimen/body_medium" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_16dp" />
+
+        <TextView
+            android:id="@+id/agreement"
+
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/manrope"
+
+            android:gravity="center_horizontal"
+            android:text="@string/mantra_continue"
+            android:textColor="@color/dark_grey_light"
+            android:textColorLink="@color/lilac"
+            android:textSize="@dimen/body_xsmall" />
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_continue"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/selector_button_drawable"
+
+        android:fontFamily="@font/manrope_bold"
+        android:text="@string/continue_text"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/body_large"
+
+        android:stateListAnimator="@null"
+        android:enabled="false"
+
+        android:paddingVertical="@dimen/_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
