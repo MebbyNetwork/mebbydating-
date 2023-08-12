@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".app.ui.settings.NotificationSettings"
+
+    android:background="@color/background_color">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appbar"
+
+        app:buttonGravity="center_vertical"
+        android:layout_margin="0dp"
+
+        android:elevation="@dimen/_2dp"
+        android:background="@color/background_color"
+
+        app:contentInsetEnd="@dimen/_16dp"
+        app:contentInsetStart="@dimen/_16dp"
+
+        android:minHeight="0dp"
+        android:paddingVertical="12dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/header"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back"
+
+                style="@style/Base.Widget.AppCompat.ImageButton.Back"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="@dimen/_8dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+
+                android:fontFamily="@font/manrope_bold"
+
+                android:gravity="start|center"
+                android:text="Notifications"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_large" />
+
+            <TextView
+                android:id="@+id/save_button"
+
+                android:visibility="invisible"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:fontFamily="@font/manrope_bold"
+
+                android:gravity="center"
+                android:text="Save"
+                android:textColor="@color/lilac"
+                android:textSize="@dimen/body_medium" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

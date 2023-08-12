@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_56dp"
+
+        android:background="@color/black"
+
+        app:contentInsetLeft="@dimen/_16dp"
+        app:contentInsetRight="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/picture_linear_layout"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/back"
+
+                    style="@style/Base.Widget.AppCompat.ImageButton.Back"
+                    android:layout_width="@dimen/_24dp"
+
+                    android:layout_height="@dimen/_24dp"
+
+                    android:layout_marginEnd="@dimen/_8dp" />
+
+                <TextView
+                    android:id="@+id/position_in_list"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:fontFamily="@font/manrope_bold"
+
+                    android:gravity="center_vertical"
+                    android:text="1 of 1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/body_large" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/dots_button"
+
+                android:layout_width="@dimen/_24dp"
+
+                android:layout_height="@dimen/_24dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dots" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

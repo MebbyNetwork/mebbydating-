@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".app.ui.swipes.SwipeFilterFragment"
+
+    android:background="@color/background_color">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appbar"
+
+        app:buttonGravity="center_vertical"
+        android:layout_margin="0dp"
+
+        android:elevation="@dimen/_2dp"
+        android:background="@color/background_color"
+
+        app:contentInsetEnd="@dimen/_16dp"
+        app:contentInsetStart="@dimen/_16dp"
+
+        android:minHeight="0dp"
+        android:paddingVertical="12dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/header"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back"
+
+                style="@style/Base.Widget.AppCompat.ImageButton.Back"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="@dimen/_8dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+
+                android:fontFamily="@font/manrope_bold"
+
+                android:gravity="center"
+                android:text="@string/filters"
+                android:textColor="@color/dark_grey_normal"
+                android:textSize="@dimen/body_large" />
+
+            <TextView
+                android:id="@+id/save_button"
+
+                android:visibility="visible"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:fontFamily="@font/manrope_bold"
+
+                android:gravity="center"
+                android:text="Apply"
+                android:textColor="@color/lilac"
+                android:textSize="@dimen/body_medium" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:visibility="gone"
+        android:id="@+id/nested_scroll_view"
+
+        android:overScrollMode="never"
+
+        android:paddingHorizontal="@dimen/_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginTop="@dimen/toolbar_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filters_layout"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/location_text"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+
+                style="@style/LabelTextView"
+                android:text="@string/location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/location_picker"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="@dimen/_56dp"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:gravity="center_vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_text">
+
+                <TextView
+                    android:id="@+id/location_text_view"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+
+                    android:background="@drawable/selector_input_drawable"
+
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/manrope_medium"
+
+                    android:gravity="center_vertical"
+
+                    android:maxLength="32"
+
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:textColor="@color/dark_grey_normal"
+                    android:textColorHint="@color/dark_grey_light"
+                    android:textSize="@dimen/body_medium"
+                    app:drawableStartCompat="@drawable/map_pin" />
+
+                <ImageButton
+                    android:id="@+id/choose"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentEnd="true"
+
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:background="@color/transparent"
+
+                    android:contentDescription="@string/choose_city"
+
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/caret_right_sm"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/gender_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_24dp"
+
+                style="@style/LabelTextView"
+                android:text="I'm interested in"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location_picker" />
+
+            <RadioGroup
+                android:id="@+id/interest_gender_radio_group"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_group_height"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:background="@drawable/disable_input_drawable"
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gender_text">
+
+                <RadioButton
+                    android:id="@+id/gender_man"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+                    android:checked="true"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="@string/man"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+                <RadioButton
+                    android:id="@+id/gender_woman"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+                    android:fontFamily="@font/manrope_semibold"
+
+                    android:gravity="center"
+                    android:text="@string/woman"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+                <RadioButton
+                    android:id="@+id/gender_all"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="@string/all"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/find_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_24dp"
+
+                android:text="I want to find"
+                style="@style/LabelTextView"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/interest_gender_radio_group" />
+
+            <RadioGroup
+                android:id="@+id/find_radio_group"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_group_height"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                android:background="@drawable/disable_input_drawable"
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/find_text">
+
+                <RadioButton
+                    android:id="@+id/find_dating"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="@string/dating"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+                <RadioButton
+                    android:id="@+id/find_friends"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+                    android:fontFamily="@font/manrope_semibold"
+
+                    android:gravity="center"
+                    android:text="@string/friends"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+                <RadioButton
+                    android:id="@+id/find_partner"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/radiobutton_selector"
+                    android:button="@color/transparent"
+                    android:checked="true"
+
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="@string/partner"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radiobutton_text_selector"
+                    android:textSize="@dimen/body_medium" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/age_range_linear_layout"
+
+                android:layout_marginTop="@dimen/_24dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+
+                app:layout_constraintTop_toBottomOf="@+id/find_radio_group">
+
+                <TextView
+                    android:id="@+id/age_range_text"
+                    style="@style/LabelTextView"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:text="@string/age_range" />
+
+                <TextView
+                    android:id="@+id/counter_age_range"
+
+                    style="@style/LabelTextView"
+                    android:text="18 - 30"
+                    android:gravity="end"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <com.google.android.material.slider.RangeSlider
+                android:layout_marginTop="@dimen/_8dp"
+
+
+                android:valueTo="70"
+                android:valueFrom="18"
+                android:stepSize="1"
+
+                app:thumbRadius="12dp"
+                app:thumbColor="@color/white"
+                app:thumbElevation="4dp"
+
+                app:labelBehavior="gone"
+
+                app:haloColor="@color/transparent"
+                app:haloRadius="0dp"
+
+                app:trackHeight="3dp"
+                app:trackColorActive="@color/blue"
+                app:trackColorInactive="@color/shimmer"
+
+                app:tickVisible="false"
+
+                app:values="@array/initial_range_slider_values"
+
+                android:id="@+id/age_range_seek_bar"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toBottomOf="@id/age_range_linear_layout"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_24dp"
+
+                android:id="@+id/interests_text"
+
+                android:text="@string/interests"
+                style="@style/LabelTextView"
+
+                app:layout_constraintTop_toBottomOf="@id/age_range_seek_bar"/>
+
+            <com.example.mebby.app.customViews.InterestsViewLayout
+                android:id="@+id/interests_view_layout"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_8dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interests_text" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+
+        style="?android:attr/progressBarStyle"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
