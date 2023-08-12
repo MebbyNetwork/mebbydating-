@@ -5,13 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mebby.data.Resource
-import com.example.mebby.domain.states.PhoneAuthState
-import com.example.mebby.domain.useCases.authUseCases.GetCredentialForPhoneAuthUseCase
-import com.example.mebby.domain.useCases.authUseCases.ResendCodeSignInUseCase
-import com.example.mebby.domain.useCases.authUseCases.SendVerificationCodeUseCase
-import com.example.mebby.domain.useCases.authUseCases.SignInWithPhoneAuthCredentialUseCase
-import com.example.mebby.enums.AuthResponse
+import com.example.domain.Resource
+import com.example.domain.sealed.AuthStates
+import com.example.domain.useCases.authUseCases.GetCredentialForPhoneAuthUseCase
+import com.example.domain.useCases.authUseCases.ResendCodeUseCase
+import com.example.domain.useCases.authUseCases.SendCodeUseCase
+import com.example.domain.useCases.authUseCases.SignInWithPhoneAuthCredentialUseCase
+import com.example.mebby.util.SingleLiveEvent
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -23,20 +23,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PhoneAuthSignInViewModel @Inject constructor(
-    private val sendVerificationCodeUseCase: SendVerificationCodeUseCase,
+    private val sendCodeUseCase: SendCodeUseCase,
     private val signInWithPhoneAuthCredentialUseCase: SignInWithPhoneAuthCredentialUseCase,
     private val getCredentialForPhoneAuthUseCase: GetCredentialForPhoneAuthUseCase,
-    private val resendCodeSignInUseCase: ResendCodeSignInUseCase
+    private val resendCodeUseCase: ResendCodeUseCase
 ) : ViewModel() {
 
     var phoneNumber = MutableLiveData<String>()
-    var mutableStateSendCode = MutableLiveData(PhoneAuthState.DEFAULT)
+    var mutableStateSendCode = SingleLiveEvent<Boolean>()
 
     private var storedVerificationId = MutableLiveData("")
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
-    private val _authLiveData = MutableLiveData<Resource<AuthResponse>>()
-    val authLiveData: LiveData<Resource<AuthResponse>> get() = _authLiveData
+    private val _authLiveData = MutableLiveData<Resource<AuthStates>>()
+    val authLiveData: LiveData<Resource<AuthStates>> get() = _authLiveData
 
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -52,11 +52,9 @@ class PhoneAuthSignInViewModel @Inject constructor(
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-            Log.d("VERIFICATION", "onCodeSent:$verificationId")
-
             storedVerificationId.value = verificationId
             resendToken = token
-            mutableStateSendCode.value = PhoneAuthState.SUCCESS
+            mutableStateSendCode.value = true
         }
     }
 
@@ -67,7 +65,7 @@ class PhoneAuthSignInViewModel @Inject constructor(
     fun sendVerificationCode() {
         if (phoneNumber.value.toString().isNotEmpty()) {
             viewModelScope.launch {
-                sendVerificationCodeUseCase.execute(deleteExtraSymbols(), callbacks)
+                sendCodeUseCase.execute(deleteExtraSymbols(), callbacks)
             }
         }
     }
@@ -82,17 +80,12 @@ class PhoneAuthSignInViewModel @Inject constructor(
 
     fun resendVerificationCode(token: PhoneAuthProvider.ForceResendingToken?) {
         viewModelScope.launch {
-            resendCodeSignInUseCase.execute(deleteExtraSymbols(), token, callbacks)
+            resendCodeUseCase.execute(deleteExtraSymbols(), token, callbacks)
         }
     }
 
-    fun getCredentialForPhoneAuth(
-        verificationId: String?,
-        code: String
-    ) = getCredentialForPhoneAuthUseCase.execute(
-        verificationId,
-        code
-    )
+    fun getCredentialForPhoneAuth(verificationId: String, code: String) =
+            getCredentialForPhoneAuthUseCase.execute(verificationId, code)
 
     fun getVerificationId(): String? = storedVerificationId.value
 

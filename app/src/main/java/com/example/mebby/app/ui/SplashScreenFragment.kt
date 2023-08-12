@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.domain.Resource
+import com.example.domain.sealed.AuthStates
 import com.example.mebby.R
 import com.example.mebby.app.viewModels.SplashScreenViewModel
-import com.example.mebby.data.Resource
 import com.example.mebby.databinding.FragmentSplashScreenBinding
-import com.example.mebby.enums.AuthResponse
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,25 +33,24 @@ class SplashScreenFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
 
-        vm.checkAuth()
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             vm.authLiveData.observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Success -> {
                         when (it.data) {
-                            AuthResponse.UserIsRegistered -> {
+                            AuthStates.IsRegistered -> {
                                 findNavController().navigate(R.id.action_splashScreen_to_mainFragment)
                             }
 
-                            AuthResponse.UserIsNotRegistered -> {
+                            AuthStates.IsNotRegistered -> {
                                 findNavController().navigate(R.id.action_splashScreen_to_registration_graph)
                             }
 
-                            AuthResponse.UserIsNotLoggedIn -> {
+                            AuthStates.IsNotLogged -> {
                                 findNavController().navigate(R.id.action_splashScreen_to_sign_in_graph)
                             }
 
@@ -60,7 +59,7 @@ class SplashScreenFragment : Fragment() {
                     }
 
                     is Resource.Error -> {
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), it.exception?.message, Toast.LENGTH_SHORT).show()
                     }
 
                     is Resource.Loading -> {}

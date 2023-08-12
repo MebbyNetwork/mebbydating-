@@ -5,12 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.InterestModel
 import com.example.mebby.R
 import com.example.mebby.app.adapters.interestsAdapter.InterestsRecyclerViewAdapter
 import com.example.mebby.app.adapters.interestsAdapter.SelectedInterestsRecyclerViewAdapter
 import com.example.mebby.app.decorators.InterestsItemDecorator
-import com.example.mebby.domain.models.InterestModel
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -39,14 +40,23 @@ class InterestsViewLayout @JvmOverloads constructor(
         search = findViewById(R.id.search_interests)
     }
 
-    fun setInterestsAdapter(adapter: InterestsRecyclerViewAdapter) {
+    fun setInterestsAdapter(adapter: InterestsRecyclerViewAdapter): InterestsViewLayout {
         interestsRecyclerViewAdapter = adapter
         initInterests()
+        return this
     }
 
-    fun setSelectedInterestsAdapter(adapter: SelectedInterestsRecyclerViewAdapter) {
+    fun setSelectedInterestsAdapter(adapter: SelectedInterestsRecyclerViewAdapter): InterestsViewLayout {
         selectedRecyclerViewAdapter = adapter
         initSelectedInterests()
+        return this
+    }
+
+    fun setSearchChange(callback: (String) -> Unit): InterestsViewLayout {
+        search.editText.addTextChangedListener {
+            callback(it.toString())
+        }
+        return this
     }
 
     fun setInterestsList(list: List<InterestModel>) {
@@ -88,12 +98,12 @@ class InterestsViewLayout @JvmOverloads constructor(
         val filteredList = ArrayList<InterestModel>()
 
         for (interest in list) {
-            if (interest.value.lowercase().startsWith(string.lowercase())) {
+            if (interest.interestValue.lowercase().startsWith(string.lowercase())) {
                 filteredList.add(interest)
             }
         }
 
-        filteredList.sortedBy { it.value }
+        filteredList.sortedBy { it.interestValue }
         interestsRecyclerViewAdapter?.setInterestsList(filteredList)
     }
 }

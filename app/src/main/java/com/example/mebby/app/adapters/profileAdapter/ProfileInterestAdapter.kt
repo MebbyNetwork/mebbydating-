@@ -3,8 +3,8 @@ package com.example.mebby.app.adapters.profileAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.InterestModel
 import com.example.mebby.databinding.ProfileInterestLayoutBinding
-import com.example.mebby.domain.models.InterestModel
 
 class ProfileInterestAdapter : RecyclerView.Adapter<ProfileInterestAdapter.ViewHolder>() {
     class ViewHolder(val binding: ProfileInterestLayoutBinding): RecyclerView.ViewHolder(binding.root)
@@ -24,7 +24,7 @@ class ProfileInterestAdapter : RecyclerView.Adapter<ProfileInterestAdapter.ViewH
         val interest = interests[position]
 
         with(holder.binding) {
-            interestTextView.text = interest.value
+            interestTextView.text = interest.interestValue
         }
     }
 

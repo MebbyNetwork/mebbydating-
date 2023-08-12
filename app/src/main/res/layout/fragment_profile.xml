@@ -7,11 +7,13 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     android:overScrollMode="never"
+    android:fitsSystemWindows="false"
     tools:context=".app.ui.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_profile"

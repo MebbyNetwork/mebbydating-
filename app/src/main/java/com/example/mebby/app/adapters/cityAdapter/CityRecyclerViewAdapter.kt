@@ -1,4 +1,4 @@
-package com.example.mebby.app.adapters
+package com.example.mebby.app.adapters.cityAdapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,17 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.city.CityModel
 import com.example.mebby.R
-import com.example.mebby.app.adapters.cityAdapter.DiffUtilCityRecyclerView
 import com.example.mebby.databinding.CityItemLayoutBinding
-import com.example.mebby.domain.models.city.CityModel
 
-interface CityRecyclerViewActionListener {
+interface ActionListener {
     fun chooseCity(cityModel: CityModel)
 }
 
 class CityRecyclerViewAdapter(
-    private val actionListener: CityRecyclerViewActionListener
+    private val actionListener: ActionListener
 ): RecyclerView.Adapter<CityRecyclerViewAdapter.ViewHolder>(), View.OnClickListener {
     class ViewHolder(val binding: CityItemLayoutBinding): RecyclerView.ViewHolder(binding.root)
 

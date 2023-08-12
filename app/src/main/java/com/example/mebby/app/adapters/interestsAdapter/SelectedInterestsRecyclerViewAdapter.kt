@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.InterestModel
 import com.example.mebby.databinding.SelectedInterestsLayoutBinding
-import com.example.mebby.domain.models.InterestModel
 
-interface SelectedInterestsRecyclerViewActionListener {
-    fun deleteInterests(interestModel: InterestModel)
+interface SelectedInterestActionListener {
+    fun deleteInterests(interest: InterestModel)
 }
 
 class SelectedInterestsRecyclerViewAdapter(
-    private val actionListener: SelectedInterestsRecyclerViewActionListener
+    private val selectedInterestActionListener: SelectedInterestActionListener
     ): RecyclerView.Adapter<SelectedInterestsRecyclerViewAdapter.ViewHolder>(), View.OnClickListener {
 
     class ViewHolder(val binding: SelectedInterestsLayoutBinding): RecyclerView.ViewHolder(binding.root)
@@ -36,7 +36,7 @@ class SelectedInterestsRecyclerViewAdapter(
             holder.itemView.tag = interest
             selectedInterestLinearLayout.tag = interest
 
-            textView.text = interest.value
+            textView.text = interest.interestValue
         }
     }
 
@@ -44,7 +44,7 @@ class SelectedInterestsRecyclerViewAdapter(
 
     override fun onClick(v: View) {
         val interestModel = v.tag as InterestModel
-        actionListener.deleteInterests(interestModel)
+        selectedInterestActionListener.deleteInterests(interestModel)
     }
 
     fun setSelectedInterestsList(list: List<InterestModel>) {

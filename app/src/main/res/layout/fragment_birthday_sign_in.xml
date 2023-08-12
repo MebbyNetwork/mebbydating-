@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".app.ui.signin.BirthdaySignInFragment"
+    tools:context=".app.ui.register.BirthdaySignInFragment"
 
     android:paddingVertical="@dimen/_8dp"
     android:paddingHorizontal="@dimen/_16dp"
@@ -67,146 +67,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_16dp" />
 
-        <LinearLayout
+        <com.example.mebby.app.customViews.birthday.BirthdayEditText
+            android:id="@+id/birthday_linear_layout"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_56dp"
 
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/day"
-                    android:textSize="@dimen/body_xsmall"
-                    android:fontFamily="@font/manrope_semibold"
-
-                    android:paddingHorizontal="@dimen/_4dp"/>
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_2dp" />
-
-                <com.example.mebby.app.customViews.CustomEditText
-                    android:id="@+id/edit_text_day"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_56dp"
-
-                    android:background="@drawable/selector_input_drawable"
-                    android:gravity="center"
-                    android:tag="DAY"
-
-
-                    android:hint="DD"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/manrope_medium"
-                    android:textColor="@color/dark_grey_normal"
-                    android:textColorHint="@color/dark_grey_light"
-                    android:textSize="@dimen/body_medium" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="@dimen/_8dp"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/month"
-                    android:textSize="@dimen/body_xsmall"
-                    android:fontFamily="@font/manrope_semibold"
-
-                    android:paddingHorizontal="@dimen/_4dp"/>
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_2dp" />
-
-
-                <com.example.mebby.app.customViews.CustomEditText
-                    android:id="@+id/edit_text_month"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_56dp"
-
-                    android:background="@drawable/selector_input_drawable"
-                    android:gravity="center"
-                    android:tag="MONTH"
-
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:fontFamily="@font/manrope_medium"
-                    android:hint="MM"
-                    android:textAlignment="center"
-                    android:textColor="@color/dark_grey_normal"
-                    android:textColorHint="@color/dark_grey_light"
-                    android:textSize="@dimen/body_medium" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="@dimen/_8dp"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/year"
-                    android:textSize="@dimen/body_xsmall"
-                    android:fontFamily="@font/manrope_semibold"
-
-                    android:paddingHorizontal="@dimen/_4dp" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_2dp" />
-
-                <com.example.mebby.app.customViews.CustomEditText
-                    android:id="@+id/edit_text_year"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_56dp"
-
-                    android:background="@drawable/selector_input_drawable"
-                    android:gravity="center"
-                    android:tag="YEAR"
-
-                    android:fontFamily="@font/manrope_medium"
-                    android:hint="YYYY"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:textAlignment="center"
-                    android:textColor="@color/dark_grey_normal"
-                    android:textColorHint="@color/dark_grey_light"
-                    android:textSize="@dimen/body_medium" />
-            </LinearLayout>
-        </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/birthday_text" />
 
         <TextView
             android:id="@+id/error"

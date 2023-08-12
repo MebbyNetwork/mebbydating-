@@ -1,11 +1,10 @@
 package com.example.mebby.app.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mebby.data.Resource
-import com.example.mebby.domain.useCases.authUseCases.SignOutUseCase
+import com.example.domain.Resource
+import com.example.domain.useCases.authUseCases.SignOutUseCase
+import com.example.mebby.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -16,11 +15,11 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(
     private val signOutUseCase: SignOutUseCase
 ): ViewModel() {
-    private val _auth = MutableLiveData<Resource<Boolean>?>()
-    val auth: LiveData<Resource<Boolean>?> = _auth
+    private val _auth = SingleLiveEvent<Resource<Boolean>?>()
+    val auth: SingleLiveEvent<Resource<Boolean>?> = _auth
 
 
-    fun signOutUseCase() {
+    fun signOut() {
         viewModelScope.launch(Dispatchers.IO) {
             _auth.postValue(signOutUseCase.execute())
             delay(1000)

@@ -1,7 +1,7 @@
 package com.example.mebby.app.adapters.interestsAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.mebby.domain.models.InterestModel
+import com.example.domain.models.InterestModel
 
 class DiffUtilInterestsRecyclerView(
     private val oldList: List<InterestModel>,
@@ -11,7 +11,7 @@ class DiffUtilInterestsRecyclerView(
     override fun getNewListSize(): Int = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].key == newList[newItemPosition].key
+        return oldList[oldItemPosition].interestId == newList[newItemPosition].interestId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
 interface ItemTouchHelperActionListener {
-    fun move(sourcePosition: Int, targetPosition: Int): Unit
+    fun move(sourcePosition: Int, targetPosition: Int)
 }
 
 class ItemTouchHelperCallbacks(private val itemTouchHelperActionListener: ItemTouchHelperActionListener): ItemTouchHelper.SimpleCallback(

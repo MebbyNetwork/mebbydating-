@@ -1,18 +1,22 @@
 package com.example.mebby.app.pickers
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mebby.app.adapters.CityRecyclerViewActionListener
-import com.example.mebby.app.adapters.CityRecyclerViewAdapter
+import com.example.domain.Resource
+import com.example.domain.models.city.CityModel
+import com.example.mebby.app.adapters.cityAdapter.ActionListener
+import com.example.mebby.app.adapters.cityAdapter.CityRecyclerViewAdapter
 import com.example.mebby.app.viewModels.CityPickerViewModel
 import com.example.mebby.const.CITY_VALUE
 import com.example.mebby.databinding.ActivityCityPickerBinding
-import com.example.mebby.domain.models.city.CityModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,10 +25,10 @@ class CityPickerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCityPickerBinding
 
     // ViewModel
-    private val vm: CityPickerViewModel by viewModels()
+    private lateinit var vm: CityPickerViewModel
 
     // RecyclerViewAdapter
-    private val recyclerViewAdapter = CityRecyclerViewAdapter(object : CityRecyclerViewActionListener {
+    private val recyclerViewAdapter = CityRecyclerViewAdapter(object : ActionListener {
         override fun chooseCity(cityModel: CityModel) {
             finishActivityWithResult(cityModel)
         }
@@ -36,17 +40,32 @@ class CityPickerActivity : AppCompatActivity() {
         binding = ActivityCityPickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        vm = ViewModelProvider(this)[CityPickerViewModel::class.java]
+
         initRecyclerView()
 
         binding.back.setOnClickListener {
-            Toast.makeText(this@CityPickerActivity, "ZERG", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@CityPickerActivity, "Cancel", Toast.LENGTH_SHORT).show()
             finishActivity(RESULT_CANCELED)
             finishAndRemoveTask()
         }
 
-        vm.cityModelList.observe(this) { cities ->
-            binding.progressBarRecyclerView.visibility = if (cities.isNotEmpty()) View.GONE else View.VISIBLE
-            recyclerViewAdapter.setCitiesList(cities)
+        vm.cities.observe(this) { cities ->
+            when (cities) {
+                is Resource.Success -> {
+                    cities.data?.let {
+                        binding.progressBarRecyclerView.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
+                        recyclerViewAdapter.setCitiesList(it)
+                    }
+
+                }
+                is Resource.Error -> {
+
+                }
+                else -> {
+
+                }
+            }
         }
     }
 

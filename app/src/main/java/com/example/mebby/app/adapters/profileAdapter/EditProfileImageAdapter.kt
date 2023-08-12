@@ -7,16 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.PictureModel
 import com.example.mebby.R
 import com.example.mebby.app.adapters.imageAdapter.DiffUtilPhotoRecyclerView
 import com.example.mebby.databinding.EditProfileImageLayoutBinding
-import com.example.mebby.domain.models.ImageModel
 import com.squareup.picasso.Picasso
 
 interface ActionListener {
-    fun addImage()
-
-    fun selectImage(imageModel: ImageModel)
+    fun addPicture()
+    fun selectPicture(picture: PictureModel)
 }
 
 class EditProfileImageAdapter(
@@ -25,7 +24,7 @@ class EditProfileImageAdapter(
 ) : RecyclerView.Adapter<EditProfileImageAdapter.ViewHolder>(), View.OnClickListener {
     class ViewHolder(val binding: EditProfileImageLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
-    var images: List<ImageModel?> = mutableListOf(null)
+    var images: List<PictureModel?> = mutableListOf(null)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -53,7 +52,7 @@ class EditProfileImageAdapter(
             imageView.tag = image
 
             if (image != null) {
-                if (image.generalImage) {
+                if (image.isProfilePicture) {
                     imageView.strokeColor = resources.getColorStateList(R.color.blue)
                     imageView.strokeWidth = resources.getDimension(R.dimen._8dp)
                 } else {
@@ -63,7 +62,7 @@ class EditProfileImageAdapter(
 
                 Picasso
                     .get()
-                    .load(image.uri)
+                    .load(image.pictureId)
                     .resize(photoSize, photoSize)
                     .centerCrop()
                     .into(imageView)
@@ -85,11 +84,11 @@ class EditProfileImageAdapter(
     override fun getItemCount(): Int = images.size
 
     override fun onClick(v: View) {
-        val image = v.tag as ImageModel?
+        val image = v.tag as PictureModel?
 
         when (v.id) {
             R.id.button_add -> {
-                actionListener.addImage()
+                actionListener.addPicture()
             }
 
             R.id.image_view -> {
@@ -97,14 +96,14 @@ class EditProfileImageAdapter(
                 if (image != null) {
                     val newList = images.slice(1 until images.lastIndex + 1).toMutableList()
 
-                    actionListener.selectImage(image)
+                    actionListener.selectPicture(image)
                 }
 
             }
         }
     }
 
-    fun setImageList(list: List<ImageModel>) {
+    fun setImageList(list: List<PictureModel>) {
         Log.d("SetImageList", "${list.size}")
 
         val diffCallback = DiffUtilPhotoRecyclerView(images.slice(1 until images.lastIndex + 1), list)

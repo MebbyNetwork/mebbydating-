@@ -1,7 +1,7 @@
 package com.example.mebby.di
 
-import com.example.mebby.data.network.CityRetrofitClient
-import com.example.mebby.data.network.interfaces.CityApi
+import com.example.data.annotation.CityRetrofitClient
+import com.example.data.interfaces.GeoDBApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {
-
     @Provides
     @Singleton
     fun httpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -54,8 +53,7 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideCityApi(@CityRetrofitClient retrofit: Retrofit): CityApi {
-        return retrofit.create(CityApi::class.java)
+    fun provideCityApi(@CityRetrofitClient retrofit: Retrofit): GeoDBApi {
+        return retrofit.create(GeoDBApi::class.java)
     }
-
 }

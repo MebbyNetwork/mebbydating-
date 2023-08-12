@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="@dimen/_8dp"
     android:background="@color/background_color"
-    tools:context=".app.ui.SwipeFragment">
+    tools:context=".app.ui.swipes.SwipeFragment">
 
     <com.example.mebby.app.customViews.ClickableMotionLayout
         android:id="@+id/swipeMotionLayout"
@@ -89,10 +89,12 @@
                     android:layout_height="8dp" />
 
                 <TextView
+                    android:id="@+id/bottom_card_about"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/manrope"
                     android:maxLength="120"
+                    android:maxLines="2"
                     android:text="@string/swipe_card_about"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
@@ -114,9 +116,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:foreground="@drawable/swipe_shape"
-                android:scaleType="centerCrop"
                 android:src="@drawable/form_placeholder_second"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -224,8 +226,10 @@
             tools:ignore="TextContrastCheck" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/filters_button"
+
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
             android:background="@color/transparent"
             android:contentDescription="@string/filters"
             android:scaleType="centerCrop"

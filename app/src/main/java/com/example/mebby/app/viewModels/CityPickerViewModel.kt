@@ -4,28 +4,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mebby.domain.models.city.CityModel
-import com.example.mebby.domain.useCases.sDataUseCases.GetCitiesListUseCase
+import com.example.domain.Resource
+import com.example.domain.models.city.CityModel
+import com.example.domain.useCases.valuesUseCases.GetCitiesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CityPickerViewModel @Inject constructor(
-    private val getCitiesListUseCase: GetCitiesListUseCase
+    private val getCitiesUseCase: GetCitiesUseCase
 ) : ViewModel() {
 
     init {
         getCities()
     }
 
-    private val mutableCityModelList = MutableLiveData<List<CityModel>>()
-    val cityModelList: LiveData<List<CityModel>> get() = mutableCityModelList
+    private val _cities = MutableLiveData<Resource<List<CityModel>>>()
+    val cities: LiveData<Resource<List<CityModel>>> get() = _cities
 
     private fun getCities() {
         viewModelScope.launch {
-            val cities = getCitiesListUseCase.execute()
-            mutableCityModelList.postValue(cities)
+            val cities = getCitiesUseCase.execute()
+            _cities.postValue(cities)
         }
     }
 }

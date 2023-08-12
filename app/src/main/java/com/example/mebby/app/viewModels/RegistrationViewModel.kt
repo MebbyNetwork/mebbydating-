@@ -5,116 +5,87 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.Resource
+import com.example.domain.models.InterestModel
+import com.example.domain.models.PictureModel
+import com.example.domain.models.ProfileModel
+import com.example.domain.sealed.Find
+import com.example.domain.sealed.Gender
+import com.example.domain.sealed.Show
+import com.example.domain.useCases.profileUseCases.CreateProfileUseCase
+import com.example.domain.useCases.valuesUseCases.GetInterestUseCase
 import com.example.mebby.util.getTimestamp
-import com.example.mebby.enums.FindTypes
-import com.example.mebby.enums.GenderTypes
-import com.example.mebby.enums.ShowTypes
-import com.example.mebby.data.Resource
-import com.example.mebby.domain.models.ImageModel
-import com.example.mebby.domain.models.InterestModel
-import com.example.mebby.domain.models.UserModel
-import com.example.mebby.domain.models.city.CityModel
-import com.example.mebby.domain.useCases.profileUseCases.CreateProfileUseCase
-import com.example.mebby.domain.useCases.sDataUseCases.GetInterestsListUseCase
 import com.example.mebby.extensions.swap
+import com.example.mebby.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
-    private val interestsListUseCase: GetInterestsListUseCase,
+    private val getInterestUseCase: GetInterestUseCase,
     private val createProfileUseCase: CreateProfileUseCase
 ) : ViewModel() {
-
     private val _name = MutableLiveData<String>()
     val name: LiveData<String> get() = _name
 
     private val _birthday = MutableLiveData("dd/mm/yyyy")
     val birthday: LiveData<String> get() = _birthday
 
-    private val _gender = MutableLiveData<GenderTypes>()
-    val gender: LiveData<GenderTypes> get() = _gender
+    private val _gender = MutableLiveData<Gender>()
+    val gender: LiveData<Gender> get() = _gender
 
-    private val _find = MutableLiveData<FindTypes>()
-    val find: LiveData<FindTypes> get() = _find
+    private val _find = MutableLiveData<Find>()
 
-    private val _show = MutableLiveData<ShowTypes>()
-    val show: LiveData<ShowTypes> get() = _show
+    private val _show = MutableLiveData<Show>()
+    val show: LiveData<Show> get() = _show
 
-    private val _images = MutableLiveData<List<ImageModel>>()
-    val images: LiveData<List<ImageModel>> get() = _images
+    private val _images = MutableLiveData<List<PictureModel>>(mutableListOf())
+    val images: LiveData<List<PictureModel>> get() = _images
 
-    private val _selectedInterests = MutableLiveData<List<InterestModel>>()
+    private val _selectedInterests = MutableLiveData<List<InterestModel>>(mutableListOf())
     val selectedInterest: LiveData<List<InterestModel>> get() = _selectedInterests
 
     private val _about = MutableLiveData<String>()
     val about: LiveData<String> get() = _about
 
-    private val _city = MutableLiveData<CityModel>()
-    val city: LiveData<CityModel> get() = _city
+    private val _city = MutableLiveData<com.example.domain.models.city.CityModel>()
+    val city: LiveData<com.example.domain.models.city.CityModel> get() = _city
 
     private val _interests = MutableLiveData<List<InterestModel>>()
     val interests: LiveData<List<InterestModel>> get() = _interests
 
     init {
-        viewModelScope.launch {
-            val result = interestsListUseCase.execute()
-
-            Log.d("interestsListUseCase", "$result")
-
-            when (result) {
-                is Resource.Success -> {
-                    _interests.postValue(result.data!!)
-                }
-                is Resource.Error -> {
-                    Log.d("interestsListUseCase", "${result.message}")
-                }
-                else -> {
-
-                }
-            }
-        }
-
-        _images.value = mutableListOf()
-        _selectedInterests.value = mutableListOf()
+        getInterests()
     }
 
-    fun setFirstName(value: String) {
-        _name.value = value
-    }
+    fun setFirstName(value: String) { _name.value = value }
 
-    fun setGenderValue(value: GenderTypes) {
-        _gender.value = value
-    }
+    fun setGender(value: Gender) { _gender.value = value }
 
-    fun setFindValue(value: FindTypes) {
-        _find.value = value
-    }
+    fun setFind(value: Find) { _find.value = value }
 
-    fun setShowValue(value: ShowTypes) {
-        _show.value = value
-    }
+    fun setShow(value: Show) { _show.value = value }
 
-    fun addImageInList(value: ImageModel) {
-        val newList: List<ImageModel> = _images.value!!.plus(value)
+    fun addPictureInList(value: PictureModel) {
+        val newList: List<PictureModel> = _images.value!!.plus(value)
         _images.value = newList
     }
 
-    fun deleteImageInList(value: ImageModel) {
+    fun deletePictureFromList(value: PictureModel) {
         val newList = ArrayList(_images.value!!)
         newList.remove(value)
         _images.value = newList
     }
 
-    fun swapImageInList(sourcePosition: Int, targetPosition: Int) {
-        val newListImageModel: List<ImageModel> = _images.value!!
+    fun swapPicture(sourcePosition: Int, targetPosition: Int) {
+        val newListImageModel: List<PictureModel> = _images.value!!
         val list = newListImageModel as MutableList
         list.swap(sourcePosition, targetPosition)
         _images.value = list
     }
 
-    fun addInterestInSelectedListInterests(value: InterestModel) {
+    fun selectInterest(value: InterestModel) {
         if (_selectedInterests.value?.contains(value) == true) return
 
         if (_selectedInterests.value?.size!! < photoLengthMaxSize) {
@@ -128,7 +99,7 @@ class RegistrationViewModel @Inject constructor(
         }
     }
 
-    fun removeInterestInSelectedListInterests(value: InterestModel) {
+    fun unselectInterest(value: InterestModel) {
         if (_interests.value?.contains(value) == true) return
 
         val newSelectList = ArrayList(_selectedInterests.value!!)
@@ -140,53 +111,49 @@ class RegistrationViewModel @Inject constructor(
         _interests.value = newList
     }
 
-    fun setAboutMeInformation(value: String) {
-        _about.value = value
+    fun setAbout(value: String) { _about.value = value }
+
+    fun setCity(value: com.example.domain.models.city.CityModel) { _city.value = value }
+
+    fun setBirthday(birthday: String) { _birthday.value = birthday }
+
+    private fun getInterests() {
+        viewModelScope.launch {
+            when (val result = getInterestUseCase.execute()) {
+                is Resource.Success -> {
+                    _interests.postValue(result.data!!)
+                }
+                is Resource.Error -> {
+                    Log.d("getInterestUseCase", "${result.exception?.message}")
+                }
+                else -> {}
+            }
+        }
     }
 
-    fun setCity(value: CityModel) {
-        _city.value = value
-    }
-
-    fun setDay(value: String) {
-        val string = "dd".replaceRange(0, value.length, value)
-        _birthday.value = _birthday.value!!.replaceRange(0, 2, string)
-    }
-
-    fun setMonth(value: String) {
-        val string = "mm".replaceRange(0, value.length, value)
-        _birthday.value = _birthday.value!!.replaceRange(3, 5, string)
-    }
-
-    fun setYear(value: String) {
-        val string = "yyyy".replaceRange(0, value.length, value)
-        _birthday.value = _birthday.value!!.replaceRange(6, 10, string)
-    }
-
-    private var _authLiveData =  MutableLiveData<Resource<Boolean>>()
+    private var _authLiveData =  SingleLiveEvent<Resource<Boolean>>()
     val authLiveData: LiveData<Resource<Boolean>> get() = _authLiveData
 
-    fun createUser() {
+    fun createProfile() {
         viewModelScope.launch {
-            try {
-                val user = UserModel(
-                    name = name.value!!,
-                    birthday = getTimestamp(birthday.value!!),
-                    gender = gender.value!!,
-                    find = find.value!!,
-                    show = show.value!!,
-                    images = images.value!!,
-                    interest = selectedInterest.value!!,
-                    about = about.value!!,
-                    city = city.value!!
-                )
+            val user = ProfileModel(
+                username = name.value!!,
+                about = about.value!!,
 
-                createProfileUseCase.execute(user).collect {
-                    Log.d("createUserUseCase", "$it")
-                    _authLiveData.value = it
-                }
-            } catch (e: Exception) {
-                _authLiveData.value = Resource.Error(e.localizedMessage ?: "Something went wrong")
+                birthday = getTimestamp(birthday.value!!).time,
+                city = city.value!!,
+
+                genderType = _gender.value!!.value,
+                findType = _find.value!!.value,
+                showType = show.value!!.value,
+
+                pictures = images.value!!,
+                pictureProfile = images.value!![0],
+                interests = selectedInterest.value!!,
+            )
+
+            createProfileUseCase.invoke(user).collect { data ->
+                _authLiveData.value = data
             }
         }
     }

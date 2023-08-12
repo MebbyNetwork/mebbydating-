@@ -3,6 +3,8 @@ package com.example.mebby.app.observers
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -12,13 +14,16 @@ import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.mebby.app.functions.getOutputMediaFileUri
-import com.example.mebby.const.REQUEST_SELECT_PHOTO_IN_GALLERY
-import com.example.mebby.const.REQUEST_TAKE_PHOTO
-import com.example.mebby.domain.models.ImageModel
+import com.example.domain.models.PictureModel
+import com.example.mebby.app.utils.getOutputMediaFileUri
 
-interface ActionListener {
-    fun addImage(imageModel: ImageModel)
+open class ActionListener {
+    open fun addPicture(picture: PictureModel) {
+    }
+
+    open fun removePicture(picture: PictureModel) {
+
+    }
 }
 
 class ImagesObserver(
@@ -37,25 +42,24 @@ class ImagesObserver(
     override fun onCreate(owner: LifecycleOwner) {
         getContent = registry.register("selectImageFromGallery", owner, ActivityResultContracts.GetContent()) {
             if (it != null) {
-                val image = ImageModel(
-                    request = REQUEST_SELECT_PHOTO_IN_GALLERY.toLong(),
-                    generalImage = false,
-                    uri = it.toString()
+                val image = PictureModel(
+                    imageUrl = it.toString(),
+                    isProfilePicture = false
                 )
 
-                actionListener.addImage(image)
+                actionListener.addPicture(image)
             }
         }
 
         takePicture = registry.register("takePicture", owner, ActivityResultContracts.TakePicture()) {
             if (it && imageUri != null) {
-                val image = ImageModel(
-                    request = REQUEST_TAKE_PHOTO.toLong(),
-                    generalImage = false,
-                    uri = imageUri.toString()
+                val image = PictureModel(
+                    imageUrl = imageUri.toString(),
+                    isProfilePicture = false
                 )
 
-                actionListener.addImage(image)
+                actionListener.addPicture(image)
+                imageUri = null
             }
         }
 
@@ -100,5 +104,4 @@ class ImagesObserver(
     fun takePhoto() {
         requestCameraPermissionLauncher.launch(android.Manifest.permission.CAMERA)
     }
-
 }

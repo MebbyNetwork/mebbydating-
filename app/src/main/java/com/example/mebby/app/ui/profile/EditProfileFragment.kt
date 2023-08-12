@@ -21,10 +21,16 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.domain.Resource
+import com.example.domain.models.InterestModel
+import com.example.domain.models.PictureModel
+import com.example.domain.models.ProfileModel
+import com.example.domain.models.city.CityModel
+import com.example.domain.sealed.Gender
 import com.example.mebby.R
-import com.example.mebby.app.adapters.interestsAdapter.InterestsRecyclerViewActionListener
+import com.example.mebby.app.adapters.interestsAdapter.InterestsActionListener
 import com.example.mebby.app.adapters.interestsAdapter.InterestsRecyclerViewAdapter
-import com.example.mebby.app.adapters.interestsAdapter.SelectedInterestsRecyclerViewActionListener
+import com.example.mebby.app.adapters.interestsAdapter.SelectedInterestActionListener
 import com.example.mebby.app.adapters.interestsAdapter.SelectedInterestsRecyclerViewAdapter
 import com.example.mebby.app.adapters.profileAdapter.ActionListener
 import com.example.mebby.app.adapters.profileAdapter.EditProfileImageAdapter
@@ -36,13 +42,7 @@ import com.example.mebby.app.viewModels.EditProfileViewModel
 import com.example.mebby.const.CITY_VALUE
 import com.example.mebby.const.EDIT_PROFILE
 import com.example.mebby.const.USER
-import com.example.mebby.data.Resource
 import com.example.mebby.databinding.FragmentEditProfileBinding
-import com.example.mebby.domain.models.ImageModel
-import com.example.mebby.domain.models.InterestModel
-import com.example.mebby.domain.models.UserProfileModel
-import com.example.mebby.domain.models.city.CityModel
-import com.example.mebby.enums.GenderTypes
 import com.example.mebby.util.checkYears
 import com.example.mebby.util.convertTimestampToDate
 import com.example.mebby.util.validateDate
@@ -57,16 +57,16 @@ class EditProfileFragment : Fragment() {
     //ViewModel
     private val vm by viewModels<EditProfileViewModel>()
 
-    private var user: UserProfileModel? = null
+    private var user: ProfileModel? = null
 
     //EditProfileImageAdapter
     private val editProfileImageAdapter by lazy { EditProfileImageAdapter(object : ActionListener {
-        override fun addImage() {
+        override fun addPicture() {
             ImagesBottomSheetDialog(requireContext(), imagesObserver).init()
         }
 
-        override fun selectImage(imageModel: ImageModel) {
-            vm.setGeneralImage(imageModel)
+        override fun selectPicture(picture: PictureModel) {
+            vm.setGeneralImage(picture)
         }
     }, resources = resources) }
 
@@ -89,9 +89,9 @@ class EditProfileFragment : Fragment() {
         imagesObserver = ImagesObserver(
             registry = requireActivity().activityResultRegistry,
             context = requireContext(),
-            actionListener = object : com.example.mebby.app.observers.ActionListener {
-                override fun addImage(imageModel: ImageModel) {
-                    vm.addImage(imageModel)
+            actionListener = object : com.example.mebby.app.observers.ActionListener() {
+                override fun addPicture(picture: PictureModel) {
+                    vm.addImage(picture)
                 }
 
             })
@@ -108,7 +108,7 @@ class EditProfileFragment : Fragment() {
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
 
         //Get user
-        user = arguments?.getParcelable(USER)
+        user = arguments?.getSerializable(USER) as? ProfileModel
         Log.d("CHECKING", "$user")
         user?.let { vm.setUser(it) }
 
@@ -145,7 +145,8 @@ class EditProfileFragment : Fragment() {
                 }
 
                 is Resource.Error -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Log.d("changeState", "${it.exception}")
+                    Toast.makeText(requireContext(), it.exception?.message, Toast.LENGTH_SHORT).show()
                 }
 
                 is Resource.Loading -> {
@@ -180,17 +181,17 @@ class EditProfileFragment : Fragment() {
 
     private fun genderInitialize() {
         binding.genderRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.gender_woman) vm.setGender(GenderTypes.WOMAN)
-            if (checkedId == R.id.gender_man) vm.setGender(GenderTypes.MAN)
+            if (checkedId == R.id.gender_woman) vm.setGender(Gender.Male)
+            if (checkedId == R.id.gender_man) vm.setGender(Gender.Female)
         }
 
-        with(vm.user.value?.gender) {
+        with(vm.user.value?.genderType) {
             when (this) {
-                GenderTypes.MAN.value -> {
+                Gender.Male.value -> {
                     binding.genderMan.isChecked = true
                 }
 
-                GenderTypes.WOMAN.value -> {
+                Gender.Female.value -> {
                     binding.genderWoman.isChecked = true
                 }
             }
@@ -199,7 +200,7 @@ class EditProfileFragment : Fragment() {
 
     private fun locationInitialize() {
         vm.user.observe(viewLifecycleOwner) {
-            binding.locationTextView.text = "${it.city.city}, ${it.city.country}"
+            binding.locationTextView.text = resources.getString(R.string.city_and_country, it.city.city, it.city.country)
 
             binding.saveButton.visibility = if (it != user) View.VISIBLE else View.INVISIBLE
         }
@@ -249,46 +250,33 @@ class EditProfileFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.addItemDecoration(EditProfileImageDecorator(resources.getDimensionPixelSize(R.dimen._8dp)))
 
-
-        vm.user.observe(viewLifecycleOwner) { it ->
-
-        }
     }
 
     private fun initInterestsView() {
         val interestsView = binding.interestsViewLayout
 
-        // Selected Interests Adapter
-        interestsView.setSelectedInterestsAdapter(
-            SelectedInterestsRecyclerViewAdapter(object :
-                SelectedInterestsRecyclerViewActionListener {
-                override fun deleteInterests(interestModel: InterestModel) {
-                    vm.removeInterestInSelectedListInterests(interestModel)
-                }
-            })
-        )
-
-        // Interests Adapter
-        interestsView.setInterestsAdapter(
-            InterestsRecyclerViewAdapter(object : InterestsRecyclerViewActionListener {
-                override fun selectInterest(interestModel: InterestModel) {
-                    vm.addInterestInSelectedListInterests(interestModel)
-                }
-            })
-        )
-
-        interestsView.search.editText.addTextChangedListener(afterTextChanged = {
-            interestsView.filterInterestsList(it.toString(), vm.interestsList.value!!)
+        val selectedAdapter = SelectedInterestsRecyclerViewAdapter(object : SelectedInterestActionListener {
+            override fun deleteInterests(interest: InterestModel) {
+                vm.unselectInterest(interest)
+            }
         })
 
-        vm.user.observe(viewLifecycleOwner) {
-            interestsView.setSelectedList(it.interests)
-        }
+        val interestAdapter = InterestsRecyclerViewAdapter(object : InterestsActionListener {
+            override fun selectInterest(interest: InterestModel) {
+                vm.selectInterest(interest)
+            }
+        })
+
+        interestsView
+            .setInterestsAdapter(interestAdapter)
+            .setSelectedInterestsAdapter(selectedAdapter)
+            .setSearchChange { vm.interestsList.value?.let { interests -> interestsView.filterInterestsList(it, interests) } }
+
+        vm.user.observe(viewLifecycleOwner) { interestsView.setSelectedList(it.interests) }
 
         vm.interestsList.observe(viewLifecycleOwner) {
-            val search = interestsView.search.editText
-            if (search.text.toString() != "") interestsView.filterInterestsList(search.text.toString(),
-                it)
+            val search = interestsView.search.editText.text.toString()
+            if (search != "") interestsView.filterInterestsList(search, it)
             interestsView.setInterestsList(it)
         }
     }

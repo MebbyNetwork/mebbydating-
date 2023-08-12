@@ -1,7 +1,7 @@
 package com.example.mebby.app.adapters.cityAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.mebby.domain.models.city.CityModel
+import com.example.domain.models.city.CityModel
 
 class DiffUtilCityRecyclerView(
     private val oldList: List<CityModel>,

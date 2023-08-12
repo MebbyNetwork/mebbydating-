@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.InterestModel
 import com.example.mebby.R
 import com.example.mebby.databinding.InterestLayoutBinding
-import com.example.mebby.domain.models.InterestModel
 
-interface InterestsRecyclerViewActionListener {
-    fun selectInterest(interestModel: InterestModel)
+interface InterestsActionListener {
+    fun selectInterest(interest: InterestModel)
 }
 
 class InterestsRecyclerViewAdapter(
-        private val actionListener: InterestsRecyclerViewActionListener
+        private val actionListener: InterestsActionListener
     ) : RecyclerView.Adapter<InterestsRecyclerViewAdapter.ViewHolder>(), View.OnClickListener {
     class ViewHolder(val binding: InterestLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -37,7 +37,7 @@ class InterestsRecyclerViewAdapter(
             holder.itemView.tag = interest
             interestTextView.tag = interest
 
-            interestTextView.text = interest.value
+            interestTextView.text = interest.interestValue
         }
     }
 

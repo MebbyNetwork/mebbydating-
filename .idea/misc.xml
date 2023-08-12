@@ -16,6 +16,7 @@
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/delete_image.xml" value="0.1765" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/disable_button_drawable.xml" value="0.174" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/disable_input_drawable.xml" value="0.174" />
+        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/dots.xml" value="0.2115" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/edit_profile.xml" value="0.2115" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/input_drawable.xml" value="0.1645" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/drawable/interest_drawable.xml" value="0.1765" />
@@ -64,13 +65,16 @@
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_main.xml" value="0.25" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_market.xml" value="0.3484375" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_messenger.xml" value="0.3625" />
-        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_phone_number_sign_in.xml" value="0.33" />
+        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_notification_settings.xml" value="0.3625" />
+        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_phone_number_sign_in.xml" value="0.5" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_photo_sign_in.xml" value="0.25" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_show_sign_in.xml" value="0.33" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_swipe.xml" value="0.25" />
+        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_swipe_filter.xml" value="0.22" />
+        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_swipe_match.xml" value="0.22" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/fragment_wallet.xml" value="0.3484375" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/interest_layout.xml" value="0.3625" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/interests_view_layout.xml" value="0.3614583333333333" />
@@ -81,6 +85,7 @@
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/shimmer_image_layout.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/shimmer_interest_layout.xml" value="0.3625" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/shimmer_profile_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/show_picture_view_layout.xml" value="0.33" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/layout/swipe_layout.xml" value="0.3625" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/menu/bottom_nav_graph.xml" value="0.3625" />
         <entry key="..\:/Users/Mason/AndroidStudioProjects/Mebby/app/src/main/res/menu/menu_main.xml" value="0.3625" />
@@ -91,7 +96,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

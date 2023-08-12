@@ -30,6 +30,7 @@ class MainFragment : Fragment() {
 
         bottomNavigationView.setupWithNavController(navController)
 
+
         navController.addOnDestinationChangedListener { _, _, arguments ->
             bottomNavigationView.isVisible = arguments?.getBoolean("showAppBar", true) == true
         }
@@ -40,5 +41,9 @@ class MainFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun setBottomNavigationVisibility(visibility: Int) {
+        binding.bottomNavigationView.visibility = visibility
     }
 }

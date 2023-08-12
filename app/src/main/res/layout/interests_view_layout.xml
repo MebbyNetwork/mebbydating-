@@ -13,11 +13,6 @@
 
         android:layout_width="0dp"
         android:layout_height="@dimen/_56dp"
-
-        android:layout_marginStart="16dp"
-
-        android:layout_marginTop="@dimen/_8dp"
-        android:layout_marginEnd="16dp"
         app:fontFamily="@font/manrope_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +26,6 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selected_interests_recycler_view"
-
-        android:layout_marginHorizontal="@dimen/_16dp"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,8 +45,6 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/interests_recycler_view"
-
-        android:layout_marginHorizontal="@dimen/_16dp"
 
         android:layout_width="match_parent"
         android:layout_height="0dp"

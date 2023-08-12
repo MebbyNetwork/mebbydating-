@@ -10,7 +10,7 @@
         app:startDestination="@id/swipeFragment">
         <fragment
             android:id="@+id/swipeFragment"
-            android:name="com.example.mebby.app.ui.SwipeFragment"
+            android:name="com.example.mebby.app.ui.swipes.SwipeFragment"
             tools:layout="@layout/fragment_swipe"
             android:label="fragment_swipe">
             <argument
@@ -18,7 +18,17 @@
                 android:defaultValue="true" />
             <action
                 android:id="@+id/action_swipeFragment_to_profileFragmentSwipe"
-                app:destination="@id/profileFragmentSwipe" />
+                app:destination="@id/profileFragmentSwipe"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+            <action
+                android:id="@+id/action_swipeFragment_to_swipeFilterFragment"
+                app:destination="@id/swipeFilterFragment"/>
+            <action
+                android:id="@+id/action_swipeFragment_to_swipeMatchFragment"
+                app:destination="@id/swipeMatchFragment" />
         </fragment>
         <fragment
             android:id="@+id/profileFragmentSwipe"
@@ -30,6 +40,17 @@
                 android:name="showAppBar"
                 android:defaultValue="true" />
         </fragment>
+        <fragment
+            android:id="@+id/swipeFilterFragment"
+            android:name="com.example.mebby.app.ui.swipes.SwipeFilterFragment"
+            android:label="fragment_swipe_filter"
+            tools:layout="@layout/fragment_swipe_filter">
+        </fragment>
+        <fragment
+            android:id="@+id/swipeMatchFragment"
+            android:name="com.example.mebby.app.ui.swipes.SwipeMatchFragment"
+            android:label="fragment_swipe_match"
+            tools:layout="@layout/fragment_swipe_match" />
     </navigation>
     <navigation
         android:id="@+id/wallet_graph"
@@ -98,7 +119,7 @@
         </fragment>
         <fragment
             android:id="@+id/settingsFragment"
-            android:name="com.example.mebby.app.ui.SettingsFragment"
+            android:name="com.example.mebby.app.ui.settings.SettingsFragment"
             android:label="fragment_settings"
             tools:layout="@layout/fragment_settings" >
             <action

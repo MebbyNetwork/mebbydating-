@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".app.ui.signin.InterestsSignInFragment"
+    tools:context=".app.ui.register.InterestsSignInFragment"
 
     android:paddingVertical="@dimen/_8dp"
     android:paddingHorizontal="@dimen/_16dp"

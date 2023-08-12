@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/background_color"
-    tools:context=".app.ui.SwipeFragment">
+    tools:context=".app.ui.swipes.SwipeFragment">
 
 
     <TextView

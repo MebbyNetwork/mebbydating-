@@ -8,7 +8,7 @@
         app:startDestination="@id/firstNameSignInFragment">
         <fragment
             android:id="@+id/firstNameSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.FirstNameSignInFragment"
+            android:name="com.example.mebby.app.ui.register.FirstNameSignInFragment"
             android:label="fragment_first_name_sign_in"
             tools:layout="@layout/fragment_first_name_sign_in">
             <action
@@ -21,7 +21,7 @@
         </fragment>
         <fragment
             android:id="@+id/birthdaySignInFragment"
-            android:name="com.example.mebby.app.ui.signin.BirthdaySignInFragment"
+            android:name="com.example.mebby.app.ui.register.BirthdaySignInFragment"
             android:label="fragment_birthday_sign_in"
             tools:layout="@layout/fragment_birthday_sign_in">
             <action
@@ -34,7 +34,7 @@
         </fragment>
         <fragment
             android:id="@+id/genderSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.GenderSignInFragment"
+            android:name="com.example.mebby.app.ui.register.GenderSignInFragment"
             android:label="fragment_gender_sign_in"
             tools:layout="@layout/fragment_gender_sign_in">
             <action
@@ -47,7 +47,7 @@
         </fragment>
         <fragment
             android:id="@+id/findSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.FindSignInFragment"
+            android:name="com.example.mebby.app.ui.register.FindSignInFragment"
             android:label="fragment_find_sign_in"
             tools:layout="@layout/fragment_find_sign_in">
             <action
@@ -60,7 +60,7 @@
         </fragment>
         <fragment
             android:id="@+id/showSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.ShowSignInFragment"
+            android:name="com.example.mebby.app.ui.register.ShowSignInFragment"
             android:label="fragment_show_sign_in"
             tools:layout="@layout/fragment_show_sign_in">
             <action
@@ -73,7 +73,7 @@
         </fragment>
         <fragment
             android:id="@+id/photoSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.PhotoSignInFragment"
+            android:name="com.example.mebby.app.ui.register.PhotoSignInFragment"
             android:label="fragment_photo_sign_in"
             tools:layout="@layout/fragment_photo_sign_in">
             <action
@@ -86,7 +86,7 @@
         </fragment>
         <fragment
             android:id="@+id/interestsSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.InterestsSignInFragment"
+            android:name="com.example.mebby.app.ui.register.InterestsSignInFragment"
             android:label="fragment_interests_sign_in"
             tools:layout="@layout/fragment_interests_sign_in">
             <action
@@ -99,7 +99,7 @@
         </fragment>
         <fragment
             android:id="@+id/aboutMeSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.AboutMeSignInFragment"
+            android:name="com.example.mebby.app.ui.register.AboutMeSignInFragment"
             android:label="fragment_about_me_sign_in"
             tools:layout="@layout/fragment_about_me_sign_in">
             <action
@@ -112,7 +112,7 @@
         </fragment>
         <fragment
             android:id="@+id/citySignInFragment"
-            android:name="com.example.mebby.app.ui.signin.CitySignInFragment"
+            android:name="com.example.mebby.app.ui.register.CitySignInFragment"
             android:label="fragment_city_sign_in"
             tools:layout="@layout/fragment_city_sign_in">
             <action
@@ -121,7 +121,7 @@
         </fragment>
         <fragment
             android:id="@+id/createUserProfile"
-            android:name="com.example.mebby.app.ui.signin.CreateUserProfile"
+            android:name="com.example.mebby.app.ui.register.CreateUserProfile"
             android:label="fragment_create_user_profile"
             tools:layout="@layout/fragment_create_user_profile">
             <action
@@ -140,7 +140,7 @@
         app:startDestination="@id/phoneNumberSignInFragment">
         <fragment
             android:id="@+id/codeSentSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.CodeSentSignInFragment"
+            android:name="com.example.mebby.app.ui.signing.CodeSentSignInFragment"
             android:label="fragment_code_sent_sign_in"
             tools:layout="@layout/fragment_code_sent_sign_in">
             <argument
@@ -167,7 +167,7 @@
         </fragment>
         <fragment
             android:id="@+id/phoneNumberSignInFragment"
-            android:name="com.example.mebby.app.ui.signin.PhoneNumberSignInFragment"
+            android:name="com.example.mebby.app.ui.signing.PhoneNumberSignInFragment"
             android:label="fragment_phone_number_sign_in"
             tools:layout="@layout/fragment_phone_number_sign_in">
             <argument

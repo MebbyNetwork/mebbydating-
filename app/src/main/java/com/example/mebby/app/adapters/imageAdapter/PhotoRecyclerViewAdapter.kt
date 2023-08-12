@@ -7,22 +7,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.domain.models.PictureModel
 import com.example.mebby.R
 import com.example.mebby.databinding.AddPhotoLayoutBinding
-import com.example.mebby.domain.models.ImageModel
 
-interface AddPhotoActionListener {
-    fun addPhoto()
-    fun deletePhoto(imageModel: ImageModel)
+interface ActionListener {
+    fun addPicture()
+    fun deletePicture(picture: PictureModel)
 }
 
 class PhotoRecyclerViewAdapter(
-    private val actionListener: AddPhotoActionListener
+    private val actionListener: ActionListener
     ) : RecyclerView.Adapter<PhotoRecyclerViewAdapter.PhotoViewHolder>(), View.OnClickListener {
 
     class PhotoViewHolder(val binding: AddPhotoLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
-    private var imageModels: MutableList<ImageModel?> = mutableListOf(null)
+    private var imageModels: MutableList<PictureModel?> = mutableListOf(null)
 
     private val limit = 6
 
@@ -45,8 +45,8 @@ class PhotoRecyclerViewAdapter(
             buttonAdd.tag = photo
             buttonDelete.tag = photo
             if (photo != null) {
-                Log.d("photoUri", photo.uri)
-                Glide.with(holder.itemView).load(photo.uri).centerCrop().into(imageView)
+                Log.d("photoUri", photo.imageUrl)
+                Glide.with(holder.itemView).load(photo.imageUrl).centerCrop().into(imageView)
                 buttonDelete.visibility = View.VISIBLE
                 buttonAdd.visibility = View.GONE
             }
@@ -60,21 +60,21 @@ class PhotoRecyclerViewAdapter(
     }
 
     override fun onClick(v: View) {
-        val imageModel = v.tag as ImageModel?
+        val imageModel = v.tag as PictureModel?
         when (v.id) {
             R.id.button_add -> {
-                actionListener.addPhoto()
+                actionListener.addPicture()
             }
 
             R.id.button_delete -> {
                 if (imageModel != null) {
-                    actionListener.deletePhoto(imageModel)
+                    actionListener.deletePicture(imageModel)
                 }
             }
         }
     }
 
-    fun setList(list: List<ImageModel?>) {
+    fun setList(list: List<PictureModel?>) {
         val diffCallback: DiffUtilPhotoRecyclerView = if (list.size == 6) {
             DiffUtilPhotoRecyclerView(imageModels, list)
         } else {

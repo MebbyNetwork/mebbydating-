@@ -21,6 +21,8 @@
         app:navGraph="@navigation/main_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        app:layout_wrapBehaviorInParent="vertical_only"
+
         android:id="@+id/bottomNavigationView"
 
         android:layout_width="0dp"

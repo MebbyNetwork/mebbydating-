@@ -1,8 +1,8 @@
 package com.example.mebby.mapper
 
-import com.example.mebby.domain.models.ImageModel
-import com.example.mebby.domain.models.InterestModel
-import com.example.mebby.domain.models.city.CityModel
+import com.example.domain.models.InterestModel
+import com.example.domain.models.PictureModel
+import com.example.domain.models.city.CityModel
 
 fun MutableMap<String, Any>.cityMapper(): CityModel {
     val city = this["city"] as String
@@ -23,26 +23,32 @@ fun MutableMap<String, Any>.cityMapper(): CityModel {
     )
 }
 
-fun MutableMap<String, Any>.interestMapper(): InterestModel {
-    val label = this["label"] as String?
-    val key = this["key"] as Long
-    val value = this["value"] as String
+fun MutableMap<String, Any>.interestsMapper(): InterestModel {
+    val interestId = this["interestId"] as Long
+    val interestValue = this["interestValue"] as String
+    val interestsDescription = this["interestsDescription"] as String?
+    val interestImage = this["interestImage"] as String?
 
     return InterestModel(
-        label = label, key = key, value = value
+        interestId = interestId,
+        interestValue = interestValue,
+        interestsDescription = interestsDescription,
+        interestImage = interestImage
     )
 }
 
-fun MutableMap<String, Any>.imageMapper(): ImageModel {
-    val uri = this[com.example.mebby.const.PictureConstants.URI] as String
-    val timestamp = this[com.example.mebby.const.PictureConstants.TIMESTAMP] as Long
-    val generalImage = this[com.example.mebby.const.PictureConstants.GENERAL_IMAGE] as Boolean
-    val request = this[com.example.mebby.const.PictureConstants.REQUEST_TYPE] as Long
+fun MutableMap<String, Any>.pictureMapper(): PictureModel {
+    val pictureId = this["pictureId"] as String
+    val userId = this["userId"] as String
+    val imageUrl = this["imageUrl"] as String
+    val uploadDate = this["uploadDate"] as Long
+    val isProfilePicture = this["isProfilePicture"] as Boolean
 
-    return ImageModel(
-        uri = uri,
-        timestamp = timestamp,
-        generalImage = generalImage,
-        request = request
+    return PictureModel(
+        pictureId = pictureId,
+        userId = userId,
+        imageUrl = imageUrl,
+        uploadDate = uploadDate,
+        isProfilePicture = isProfilePicture
     )
 }

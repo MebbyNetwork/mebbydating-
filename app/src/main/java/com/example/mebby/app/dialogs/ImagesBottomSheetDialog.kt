@@ -6,7 +6,6 @@ import android.view.View
 import android.view.Window
 import android.widget.LinearLayout
 import com.example.mebby.R
-import com.example.mebby.app.functions.getOutputMediaFileUri
 import com.example.mebby.app.observers.ImagesObserver
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
